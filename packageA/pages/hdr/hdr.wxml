@@ -1,3 +1,0 @@
-<view class="container">
-    <canvas class="webgl" type="webgl" id="webgl" style="width: {{width}}px; height: {{height}}px"></canvas>
-</view>

@@ -1,57 +1,89 @@
 <!--index.wxml-->
-<view class="{{isIPhoneX ? 'container-x' :'container'}} {{isMask === true ? 'mask-blur':''}}" >
-    <view class="header">
-        <image src="/images/index/service.png" class="service" bindtap="goService"></image>
-        <view class="searchInput">
-            <view class="searchDeafult" bindtap="goSearch">
-                <image class="image" src="/images/index/search.png"></image>
-                <input class="input" disabled type="text" placeholder="搜索" />
-            </view>
-            <image class="image" src="/images/index/box2.png"></image>
-        </view>
-        <image bindtap="goHistroy" src="/images/index/history.png" class="history"></image>
+<view class="{{isIPhoneX ? 'container-x' :'container'}} {{isMask === true ? 'mask-blur':''}}">
+    <search-enter disable="true" bind:goSearch="goSearch"></search-enter>
+    <view class="textline">
+        <view class="welcome">Welcome to AR world !</view>
     </view>
-    <view class="welcome">Welcome to ARworld ! </view>
     <scroll-view enhanced="true" bounces="true" enable-flex="{{true}}" class="scroll-view" scroll-x="{{true}}">
         <view data-item="{{item}}" bindtap="gopriview" class="scroll-item" wx:for="{{list}}" wx:key="id">
-            <image src="https://ar-test-0824.obs.cn-east-3.myhuaweicloud.com/{{item.bookCoverObsPath +item.bookCoverObsName}}" class="scrollImage"></image>
+            <image lazy-load src="https://ar-p2.obs.cn-east-3.myhuaweicloud.com/{{item.bookCoverObsPath +item.bookCoverObsName}}" class="scrollImage"></image>
             <text class="text">{{item.projectName}}</text>
         </view>
     </scroll-view>
     <view class="collect" bindtap="goColllect" wx:if="{{!isCollect}}">
-        <image class="image" src="/images/index/logobg.png"></image>
+        <image lazy-load class="image" src="/images/index/logobg.png"></image>
         <view class="addCollect">
-            <image class="imagebox" src="{{collectUrl}}"></image>
-            <text>{{collect.projectName}}</text>
-        </view>
-    </view>
-    <view class="collect" bindtap="gopriview" wx:else data-item="{{collect}}">
-        <image class="image" src="/images/index/logobg.png"></image>
-        <view class="addCollect">
-            <image class="collectImage" src="{{collectUrl}}"></image>
-            <text class="text">{{collect.projectName}}</text>
-        </view>
-        <view capture-catch:touchstart="goColllect" class="resetImg">
-            <image class="image" src="/images/index/reset.png"></image>
-        </view>
-    </view>
-    <view class="compList">
-        <view class="compListTop">
-            企业榜单
-        </view>
-        <view class="compListMain">
-            <view class="mainLeft" bindtap="gopriview" data-item="{{compList[0]}}">
-                <image src="https://ar-test-0824.obs.cn-east-3.myhuaweicloud.com/{{compList[0].bookCoverObsPath + compList[0].bookCoverObsName}}"></image>
-                <text>{{compList[0].projectName}}</text>
-            </view>
-            <view class="mainRight">
-                <view wx:for="{{[1,2]}}" wx:key="id" class="mainRight2" data-item="{{compList[item]}}" bindtap="gopriview">
-                    <image src="https://ar-test-0824.obs.cn-east-3.myhuaweicloud.com/{{compList[item].bookCoverObsPath + compList[item].bookCoverObsName}}"></image>
-                    <text>{{compList[item].projectName}}</text>
-                </view>
-            </view>
+            <image lazy-load class="imagebox" src="{{collectUrl}}"></image>
+            <text class="text2">点击收藏</text>
 
         </view>
     </view>
+    <view class="collect" bindtap="gopriview" wx:else data-item="{{collect}}">
+        <image lazy-load class="image" src="/images/index/logobg.png"></image>
+        <view class="addCollect">
+            <image lazy-load class="collectImage" src="{{collectUrl}}"></image>
+            <text class="text">{{collect.projectName}}</text>
+        </view>
+        <view capture-catch:touchstart="goColllect" class="resetImg">
+            <image lazy-load class="image" src="/images/index/reset.png"></image>
+        </view>
+    </view>
+    <view class="compList">
+
+        <view class="compListTop">
+            <image lazy-load class="imageComp" mode='heightFix' src="/images/index/best2.png"></image>
+            企业榜单
+        </view>
+        <van-tabs title-inactive-color="color: #6B6B6B" title-active-color="color: #020202;" active="{{ active }}" bind:change="onChange">
+            <van-tab title-style="font-size: 30rpx;font-family: PingFang SC;" title="公共服务">
+                <view class="tabMain">
+                    <view data-item="{{item}}" bindtap="gopriview" class="tabBox" wx:for="{{compList}}" wx:key="id">
+                        <div class="tabBorder">
+                            <image class="tabImage" lazy-load  src="https://ar-p2.obs.cn-east-3.myhuaweicloud.com/{{item.bookCoverObsPath +item.bookCoverObsName}}" mode="" />
+                        </div>
+
+                        <text>{{item.projectName}}</text>
+                    </view>
+
+                </view>
+            </van-tab>
+            <van-tab title-style="font-size: 30rpx;font-family: PingFang SC;" title="消费科技">
+                <view class="tabMain">
+                    <view data-item="{{item}}" bindtap="gopriview" class="tabBox" wx:for="{{compList1}}" wx:key="id">
+                        <div class="tabBorder">
+                            <image class="tabImage" lazy-load  src="https://ar-p2.obs.cn-east-3.myhuaweicloud.com/{{item.bookCoverObsPath +item.bookCoverObsName}}" mode="" />
+                        </div>
+
+                        <text>{{item.projectName}}</text>
+                    </view>
+
+                </view>
+            </van-tab>
+            <van-tab title-style="font-size: 30rpx;font-family: PingFang SC;" title="智能制造">
+                <view class="tabMain">
+                    <view data-item="{{item}}" bindtap="gopriview" class="tabBox" wx:for="{{compList2}}" wx:key="id">
+                        <div class="tabBorder">
+                            <image class="tabImage" lazy-load  src="https://ar-p2.obs.cn-east-3.myhuaweicloud.com/{{item.bookCoverObsPath +item.bookCoverObsName}}" mode="" />
+                        </div>
+
+                        <text>{{item.projectName}}</text>
+                    </view>
+                </view>
+            </van-tab>
+            <van-tab title-style="font-size: 30rpx;font-family: PingFang SC;" title="其他">
+                <view class="tabMain">
+                    <view data-item="{{item}}" bindtap="gopriview" class="tabBox" wx:for="{{compList3}}" wx:key="id">
+                        <div class="tabBorder">
+                            <image class="tabImage" lazy-load  src="https://ar-p2.obs.cn-east-3.myhuaweicloud.com/{{item.bookCoverObsPath +item.bookCoverObsName}}" mode="" />
+                        </div>
+
+                        <text>{{item.projectName}}</text>
+                    </view>
+
+                </view>
+            </van-tab>
+        </van-tabs>
+    </view>
+    <tab-bar tabIndex='2'></tab-bar>
 </view>
 <confirm-mask borchureDetail="{{borchureDetail}}" bindchangeMask="changeMask" isShow="{{isMask}}"></confirm-mask>

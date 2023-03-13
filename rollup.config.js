@@ -14,13 +14,13 @@ const plugins = [
 
 export default [
   {
-    input: ['./pages/canvasAr/behavior.ts'],
+    input: ['./packageB/pages/arKit/behavior.ts'],
     treeshake: true,
     output: {
       format: 'cjs',
-      dir: 'pages/',
-      chunkFileNames: 'chunks/[name].js',
-      entryFileNames: 'canvasAr/[name].js',
+      dir: 'packageB/pages',
+      chunkFileNames: 'chunks/[name]2.js',
+      entryFileNames: 'arKit/[name].js',
       manualChunks: {
         'three-platformize': ['three-platformize']
       }

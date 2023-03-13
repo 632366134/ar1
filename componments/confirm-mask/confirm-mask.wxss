@@ -33,8 +33,8 @@
   color: #1e74ed;
 }
 .confirmMask .confirmBtn {
-  background-color: #dbeafc;
-  margin-top: 432rpx;
+  background-color: #829fff;
+  margin-top: 212rpx;
   width: 400rpx;
   height: 88rpx;
   text-align: center;
@@ -42,11 +42,25 @@
   font-size: 28rpx;
   font-family: PingFang SC;
   font-weight: 500;
-  color: #1e74ed;
-  border-radius: 5rpx;
+  color: #fff;
+  border-radius: 10rpx;
+}
+.confirmMask .arKitBtn {
+  margin-top: 42rpx;
+  background-color: #dbeafc;
+  width: 400rpx;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #829fff;
+  border-radius: 10rpx;
 }
 .confirmMask .pointRow {
-  margin-top: 23rpx;
+  position: absolute;
+  bottom: 99rpx;
 }
 .confirmMask .pointRow image {
   width: 19rpx;

@@ -1,31 +1,42 @@
 {
     "pages": [
-
         "pages/index/index",
-        "pages/canvasAr/canvasAr",
         "pages/collect/collect",
         "pages/searchList/searchList",
         "pages/collectSearch/collectSearch",
-        "pages/history/history",
         "pages/compSearch/compSearch",
-        "pages/compSearchList/compSearchList"
+        "pages/compSearchList/compSearchList",
+        "pages/web-view/web-view",
+        "pages/signIn/signIn"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "Weixin",
         "navigationBarTextStyle": "black",
-        "navigationStyle": "custom"
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 20
     },
     "subpackages": [
         {
             "root": "packageA",
             "pages": [
                 "pages/mycomp/mycomp",
-                "pages/hdr/hdr"
+                "pages/canvasAr/canvasAr"
+            ]
+        },
+        {
+            "root": "packageB",
+            "pages": [
+                "pages/arKit/arKit",
+                "pages/mine/mine",
+                "pages/useQA/useQA",
+                "pages/answer/answer"
             ]
         }
     ],
     "style": "v2",
-    "sitemapLocation": "sitemap.json"
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents"
 }

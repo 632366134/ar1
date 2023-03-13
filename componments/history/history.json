@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "confirm-mask":"/componments/confirm-mask/confirm-mask"
+    }
+}

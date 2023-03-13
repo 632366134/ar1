@@ -1,0 +1,32 @@
+<swiper wx:if="{{historyList.length >0}}" current="{{currentBannerIndex}}" bindchange="handleChangeBanner" next-margin="60rpx" previous-margin="60rpx" class="swiper">
+    <swiper-item wx:for="{{historyList}}" wx:for-index="i" wx:key="i">
+        <view class="swiper-item-view" animation="{{currentBannerIndex == index ? animationSelected : animationNoSelected}}">
+            <text class="addtime">{{item.date}}</text>
+            <view class="swiper-item-item" bindtap="gopriview" data-item="{{item}}">
+                <image lazy-load mode="aspectFit" src="https://ar-p2.obs.cn-east-3.myhuaweicloud.com/{{item.bookCoverObsPath + item.bookCoverObsName}}" class="scrollImage"></image>
+                <text>{{item.projectName}}</text>
+                <image lazy-load wx:if="{{m1.flag2(item.projectCode,collect) == true}}" src="/images/collect/collectType.png" class="collect_point">收藏</image>
+
+                <view class="btn_view">
+                    <view wx:if="{{m1.flag2(item.projectCode,collect) == true}}" class="collect_btn">收藏</view>
+                    <view wx:if="{{m1.flag(item.mediaType) == true}}" class="model_btn">模型</view>
+
+                </view>
+            </view>
+        </view>
+    </swiper-item>
+</swiper>
+<image class="noSearch" wx:else="" src="/images/search/noSerach.png"></image>
+<confirm-mask borchureDetail="{{borchureDetail}}" bindchangeMask="changeMask" isShow="{{isMask}}"></confirm-mask>
+<wxs module="m1">
+    var flag = function (mediaType) {
+        return mediaType == 5
+    }
+    var flag2 = function (projectCode,collect) {
+        return projectCode == collect.projectCode
+    }
+
+    module.exports.flag = flag;
+    module.exports.flag2 = flag2;
+
+</wxs>

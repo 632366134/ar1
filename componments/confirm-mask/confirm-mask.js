@@ -1,6 +1,7 @@
 // componments/confirm/confirm.js
 import { goTo } from "../../utils/navigate";
 const publicFn = require("../../utils/public");
+const { API } = require("../../utils/request");
 var app = getApp();
 Component({
   /**
@@ -22,6 +23,7 @@ Component({
    */
   data: {
     isIPhoneX: app.isIPhoneX,
+    mediaTypeFlag: false,
   },
 
   /**
@@ -29,13 +31,61 @@ Component({
    */
 
   methods: {
-    enter: function () {
+    async enter() {
       let list = wx.getStorageSync("historyList") || [];
-      console.log(this.properties.borchureDetail, list);
-      list.unshift(this.properties.borchureDetail);
+      let detail = this.properties.borchureDetail;
+
+      let { mediaList } = await API.selMediaApps({
+        projectCode: detail.projectCode,
+      });
+      if (
+        mediaList.some((s) => {
+          return s.mediaType == 5;
+        })
+      ) {
+        console.log("5");
+        detail.mediaType = 5;
+        this.setData({ borchureDetail: detail });
+      }
+      detail.date = this.unixStandardDate();
+      let isHistory = list.findIndex((v) => v.id == detail.id);
+      if (isHistory != -1) {
+        list.splice(isHistory, 1);
+      }
+
+      list.unshift(detail);
       list.length = list.length >= 5 ? 5 : list.length;
       wx.setStorageSync("historyList", list);
-      console.log(this.properties.borchureDetail);
+    },
+    unixStandardDate(
+      dates = Date.now(),
+      separatorStr = "/",
+      unixType = "date"
+    ) {
+      //把时间戳转化成Date对象
+      let date = new Date(dates);
+      //获取年月日
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      month = month < 10 ? "0" + month : month;
+      let day = date.getDate();
+      day = day < 10 ? "0" + day : day;
+      //返回的年月日
+      let resultDate = year + separatorStr + month + separatorStr + day;
+      //获取时间
+      let hours = date.getHours();
+      hours = hours < 10 ? "0" + hours : hours;
+      let minutes = date.getMinutes();
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      let seconds = date.getSeconds();
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      let resultTime = hours + ":" + minutes + ":" + seconds;
+      //判断是转换日期还是转换时间
+      if (unixType === "date") {
+        return resultDate;
+      } else if (unixType === "time") {
+        return resultDate + " " + resultTime;
+      }
     },
     exit() {
       this.triggerEvent("changeMask");
@@ -45,27 +95,46 @@ Component({
     },
     confirmAr() {
       publicFn.Loading();
-      let url = `https://ar-test-0824.obs.cn-east-3.myhuaweicloud.com/${this.properties.borchureDetail.bookCoverObsPath}${this.properties.borchureDetail.bookCoverObsName}`
+      let url = `https://ar-p2.obs.cn-east-3.myhuaweicloud.com/${this.properties.borchureDetail.bookCoverObsPath}${this.properties.borchureDetail.bookCoverObsName}`;
       this.handleCamera()
         .then((res) => {
-        //   wx.downloadFile({
-            // url: "https:" + this.properties.borchureDetail.bookCover,
-            // url:"https://wallpaper-static.cheetahfun.com/wallpaper/sites/hits/pic2.png",
-            // url:url,
-            // success: (res) => {
-            //   console.log(res);
-            //   let imgUrl = res.tempFilePath;
-              wx.setStorageSync("imgUrl", url);
-            console.log(this.properties.borchureDetail.projectCode)
-              wx.setStorageSync("projectCode",this.properties.borchureDetail.projectCode);
-              goTo("canvasAr", {
-                projectCode: this.properties.borchureDetail.projectCode,
-              });
-            // },
-        //   });
+          wx.setStorageSync("imgUrl", url);
+          console.log(this.properties.borchureDetail.projectCode);
+          wx.setStorageSync(
+            "projectCode",
+            this.properties.borchureDetail.projectCode
+          );
+          goTo("canvasAr", {
+            projectCode: this.properties.borchureDetail.projectCode,
+          });
+          this.setData({ isShow: false });
+          // },
+          //   });
         })
         .catch((err) => {
-          reject(err);
+          publicFn.LoadingOff();
+        });
+    },
+    arKitBtn() {
+      publicFn.Loading();
+      let url = `https://ar-p2.obs.cn-east-3.myhuaweicloud.com/${this.properties.borchureDetail.bookCoverObsPath}${this.properties.borchureDetail.bookCoverObsName}`;
+      this.handleCamera()
+        .then((res) => {
+          wx.setStorageSync("imgUrl", url);
+          console.log(this.properties.borchureDetail.projectCode);
+          wx.setStorageSync(
+            "projectCode",
+            this.properties.borchureDetail.projectCode
+          );
+          goTo("arKit", {
+            projectCode: this.properties.borchureDetail.projectCode,
+          });
+          this.setData({ isShow: false });
+          // },
+          //   });
+        })
+        .catch((err) => {
+          publicFn.LoadingOff();
         });
     },
     handleCamera() {

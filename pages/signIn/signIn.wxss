@@ -1,0 +1,90 @@
+/* pages/signIn/signIn.wxss */
+.container-x {
+    background: none;
+}
+
+.container {
+    background: none;
+}
+
+.phoneInput {
+    margin-top: 158rpx;
+    width: 100%;
+    height: 118rpx;
+    padding: 0 30rpx 0 38rpx;
+    box-sizing: border-box;
+
+}
+.phoneInput2 {
+    margin-top: 1rpx;
+    width: 100%;
+    height: 118rpx;
+    padding: 0 30rpx 0 38rpx;
+    box-sizing: border-box;
+}
+.border {
+    width: 100%;
+    padding:0 30rpx 0 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-bottom:3rpx solid #dcdcdc;
+}
+
+.phoneLabel {
+    font-size: 26rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #595959;
+    white-space: nowrap;
+}
+
+.userPhone {
+    margin-left: 65rpx;
+    font-size: 26rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #919191;
+
+}
+
+.serbtn {
+    margin: 0 !important;
+    width: 160rpx !important;
+    height: 58rpx !important;
+    background: #E9EEFE;
+    border: 1rpx solid #829FFF;
+    border-radius: 10rpx;
+    padding: 0 !important;
+    font-size: 22rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #829FFF;
+    box-sizing: border-box;
+    line-height: 58rpx;
+
+}
+.success {
+    box-sizing: border-box;
+    margin-top:60rpx;
+    width: 100%;
+    height: 88rpx;
+    padding: 0 75rpx;
+}
+.successBtn {
+    width: 100% !important;
+height: 100% !important;
+background: #829FFF;
+border-radius: 10rpx;
+padding: 0 !important;
+margin: 0 !important;
+font-size: 26rpx;
+font-family: PingFang SC;
+font-weight: 500;
+box-sizing: border-box;
+
+color: #FFFFFF;
+line-height: 88rpx;
+}

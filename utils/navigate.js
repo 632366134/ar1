@@ -36,7 +36,7 @@ export function goTo(url, param = {}, time = 0) {
  * @param {number} time 延时跳转，默认不延时
  * @description  先取出页面栈，页面栈最多十层，判断目标页面是否在页面栈中，如果在，则通过目标页的位置，返回到目标页面，否则调用navigateTo方法跳转到目标页
  */
-export function navigateBack(url, param = {}, time = 0) {
+export function navigateBack(url, param = {}) {
   let _url = route[url];
   const pagesList = getCurrentPages();
   let index = pagesList.findIndex((e) => {
@@ -44,19 +44,27 @@ export function navigateBack(url, param = {}, time = 0) {
   });
   if (index == -1) {
     // 没有在页面栈中，可以调用navigateTo方法
-    goTo(url, param, time);
+    goTo(url, param);
   } else {
-    setTimeout(() => {
+    wx.nextTick(() => {
+      console.log(pagesList.length, index, "pagesList.length - 1 - index");
+
       wx.navigateBack({
         delta: pagesList.length - 1 - index,
+        success(res) {
+          console.log(res, "success");
+        },
         fail(err) {
+          goTo(url, param);
           console.log("navigateBack返回出错", err);
         },
         complete() {
+          console.log("naviga234234返回出错");
+
           route[url] = _url;
         },
       });
-    }, time);
+    });
   }
 }
 
@@ -90,7 +98,6 @@ export function reLaunch(url, param = {}) {
   let _url = route[url];
 
   if (param) {
-
     route[url] += `?param=${JSON.stringify(param)}`;
   }
   wx.reLaunch({

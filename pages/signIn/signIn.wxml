@@ -1,0 +1,24 @@
+<view class='{{isIPhoneX ? "container-x ":"container"}}'>
+    <navigate-back url="" title3="登录"></navigate-back>
+    <view class="phoneInput">
+        <view class="border">
+            <label class="phoneLabel">手机号</label>
+            <input  disabled confirm-type="done" bindinput="phoneBlur" 	bindconfirm="phoneBlur" bindblur="phoneBlur" value="{{userPhone}}" maxlength="11" type="number" class="userPhone" name="userPhone" placeholder="输入/快捷获取手机号" />
+            <button plain="{{hasPhone}}" disabled="{{hasPhone}}" class="serbtn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">快捷获取</button>
+        </view>
+
+
+    </view>
+    <!-- <view class="phoneInput2" wx:if="{{userPhone.length == 11}}">
+        <view class="border">
+            <label class="phoneLabel">验证码</label>
+            <input value="{{code}}" maxlength="11" type="number" class="userPhone" name="userPhone" placeholder="请输入验证码" />
+            <button hidden='{{hidden}}' disabled='{{btnDisabled}}' bindtap="sendMsg" class="serbtn" >获取验证码</button>
+        </view>
+
+
+    </view> -->
+    <view class="success">
+        <button bindtap="goMine"  class="successBtn">完成</button>
+    </view>
+</view>

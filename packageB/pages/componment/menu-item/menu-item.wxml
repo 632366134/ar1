@@ -1,0 +1,8 @@
+<view class="menu_item">
+    <button disabled="{{hasPhone}}"class="serbtn" open-type="{{BtnType}}" bindgetphonenumber="getPhoneNumber"></button>
+    <view class="item_main">
+        <slot></slot>
+        <view class="menuDes">{{text}}</view>
+    </view>
+    <image class="right" src="../../images/right.png"></image>
+</view>

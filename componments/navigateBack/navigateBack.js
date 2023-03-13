@@ -30,7 +30,12 @@ Component({
    */
   methods: {
     back() {
+        if(this.data.url == ''){
+            wx.navigateBack()
+        }else{
       navigateBack(this.data.url);
+
+        }
     },
   },
 });

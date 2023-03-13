@@ -45,38 +45,21 @@
 .history {
   width: 100%;
   box-sizing: border-box;
-  padding: 0 40rpx 0 40rpx;
   margin-top: 29rpx;
 }
 .history .historytop {
+  margin-left: 40rpx;
   font-size: 24rpx;
   font-family: PingFang SC;
   font-weight: 500;
   color: #888888;
+  display: flex;
+  justify-content: space-between;
 }
 .history .historyGroup {
   display: flex;
-  margin-top: 21rpx;
+  margin-top: 24rpx;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-.history .historyGroup .box {
-  margin-bottom: 20rpx;
-  z-index: 9;
-  padding: 22rpx 56rpx;
-  font-size: 26rpx;
-  font-family: PingFang SC;
-  font-weight: 500;
-  color: #595858;
-  background-color: #f7f9fd;
-  text-align: center;
-  border-radius: 26rpx;
-  white-space: nowrap;
-}
-.noSearch {
-  position: fixed;
-  left: 143rpx;
-  bottom: 250rpx;
-  width: 464rpx;
-  height: 420rpx;
+  justify-content: center;
+  height: 100%;
 }

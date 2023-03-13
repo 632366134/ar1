@@ -1,0 +1,24 @@
+<view class="{{isIPhoneX ? 'container-x' :'container'}}">
+    <navigate-back url="index"></navigate-back>
+    <view class="main">
+        <view class="{{isIPhoneX ? 'container-x' :'container'}} page" data-weui-theme="{{theme}}">
+
+            <canvas   class="webgl" type="webgl" id="webgl" style="width: {{width}}px; height: {{height}}px">
+            </canvas>
+            <view class="selectionModel" wx:if="{{isShowScan}}">
+                <view data-index="{{index}}" catchtap="changeModel" data-item="{{item}}" wx:for="{{mediaList.length}}" wx:key="id" class="selectionModelItem">模型{{index+1}}</view>
+
+            </view>
+            <view class="back" wx:if="{{isShowScan}}" bindtap="reset">重置</view>
+        </view>
+        <view class="{{isIPhoneX ? 'container2-x' :'container2'}}" wx:if="{{!isShowScan}}">
+            <!-- <view class="back" bindtap="back">返回</view> -->
+            <image class="logo" src="/images/confirm-mask/arlogo2.png"></image>
+            <view class="boxShadow"></view>
+            <view class="progressPercent">正在加载素材中...</view>
+            <progress active-mode="forwards" activeColor="#b2b2b2" duration="{{percentLine}}" class="progress" active="true" percent="{{100}}"></progress>
+            <view class="longText">AR宣传册让宣传刊加添了一个全新的角度</view>
+        </view>
+
+    </view>
+</view>

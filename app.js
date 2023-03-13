@@ -15,8 +15,9 @@ App({
       success: function (res) {
         var safeBottom = res.screenHeight - res.safeArea.bottom
         that.kBottomSafeHeight = safeBottom
+        let statusBarHeight= res.statusBarHeight
         //根据安全高度判断
-        if (safeBottom ===34) {
+        if (safeBottom ===34 || statusBarHeight >= 44) {
           that.globalData.isIPhoneX = true
           that.isIPhoneX = true
         }
@@ -34,9 +35,8 @@ App({
 },
   async getUserInfo() {
     let data = {
-      pagination: "1",
-      pageNum: "5",
-      page: "1",
+      pageNum: "1",
+      pagesize: "2",
       projectName: "",
       userCode: "",
     };
@@ -44,4 +44,6 @@ App({
     wx.setStorageSync("list", list);
     console.log(list);
   },
+  //用户点击右上角分享给好友，要现在分享到好友这个设置menu的两个参数，才可以实现分享到朋友圈
+  
 });

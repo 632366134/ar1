@@ -1,4 +1,7 @@
 {
-    "component": true,
-    "usingComponents": {}
+  "component": true,
+  "usingComponents": {
+    "search-enter": "/componments/searchEnter/searchEnter",
+    "history": "/componments/history/history"
+  }
 }

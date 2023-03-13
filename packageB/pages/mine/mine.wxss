@@ -1,0 +1,100 @@
+.mine {
+  height: 100vh;
+}
+.mine .title {
+  margin-top: 66rpx;
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #000000;
+}
+.mine .main {
+  box-sizing: border-box;
+  padding-left: 30rpx;
+  margin-top: 41rpx;
+  width: 690rpx;
+  height: 200rpx;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+}
+.mine .main .avatar {
+  margin-right: 20rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.mine .main .avatar .getAvatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+}
+.mine .main .avatar .getAvatar .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.mine .main .userName {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020202;
+}
+.mine .banner {
+  width: 690rpx;
+  height: 150rpx;
+  border-radius: 15rpx;
+  background-color: #ccc;
+  margin-top: 20rpx;
+}
+.mine .banner .bannerStyle {
+  width: 100%;
+  height: 100%;
+}
+.mine .menu {
+  margin-top: 30rpx;
+  width: 690rpx;
+  height: 384rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.mine .menu .fontStyle {
+  width: 34rpx;
+  height: 34rpx;
+}
+.mine .menu .menu_item {
+  box-sizing: border-box;
+  display: flex;
+  padding: 0 30rpx;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 108rpx;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 15rpx;
+}
+.mine .menu .menu_item .item_main {
+  display: flex;
+  align-items: center;
+}
+.mine .menu .menu_item .item_main .fontStyle {
+  width: 34rpx;
+  height: 34rpx;
+}
+.mine .menu .menu_item .item_main .menuDes {
+  margin-left: 10rpx;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #020202;
+}
+.mine .menu .menu_item .right {
+  width: 18rpx;
+  height: 18rpx;
+}

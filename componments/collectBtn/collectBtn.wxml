@@ -1,1 +1,1 @@
-<view class="collectBtn" bindtap="mytap">设为默认</view>
+<view class="{{isIPhoneX ? 'collectBtn-x' :'collectBtn'}}" bindtap="mytap">确认收藏</view>

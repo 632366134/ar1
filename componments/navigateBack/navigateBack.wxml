@@ -1,4 +1,6 @@
-<view class="navigateback">
+<view class="{{isIPhoneX ? 'navigateback-x' :'navigateback'}}">
     <text>{{title3}}</text>
 </view>
-<image bindtap="back" class="back" src="/images/backBtn.png"></image>
+<view bindtap="back"  class="{{isIPhoneX ? 'backbtn-x' :'backbtn'}}">
+    <image  class="back" src="/images/backBtn.png"></image>
+</view>

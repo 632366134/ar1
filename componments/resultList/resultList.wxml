@@ -1,0 +1,23 @@
+<view class="collect_list">
+    <view class=" collect_box " data-item="{{item}}" wx:for="{{list}}" wx:key="id" bindtap="select_box">
+        <view class="border">
+        <image class="collect_point" wx:if="{{item.collect}}" src="/images/collect/collectType.png"></image>
+            <image class="image" lazy-load src="https://ar-p2.obs.cn-east-3.myhuaweicloud.com/{{item.bookCoverObsPath + item.bookCoverObsName}}"></image>
+            <view class="desc">
+                <view class="proName">{{item.projectName}}</view>
+                <view class="compName">{{item.companyName}}</view>
+                <view class="btn">
+                    <view wx:if="{{item.collect}}" class="collectView">收藏</view>
+                    <view wx:if="{{m1.flag(item.mediaType) == true}}" class="modelView">模型</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="m1">
+    var flag = function (mediaType) {
+        return mediaType == 5
+    }
+
+    module.exports.flag = flag;
+</wxs>

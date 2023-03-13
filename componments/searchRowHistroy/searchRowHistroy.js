@@ -6,10 +6,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    compList: {
-      type: Array,
-      default: [],
-    },
+    historyList:{
+        type:Array,
+        default:[]
+    }
   },
 
   /**
@@ -30,8 +30,15 @@ Component({
     goSearch2(item) {
       this.triggerEvent("myevent2",item);
     },
-    bindKeyInput(e) {
+    myKeyinput(e) {
+        console.log(e)
       this.triggerEvent("myKeyinput",e);
     },
+    myevent1(){
+      this.triggerEvent("myevent1");
+    },
+    deleteHistory(){
+      this.triggerEvent("deleteHistory");
+    }
   },
 });

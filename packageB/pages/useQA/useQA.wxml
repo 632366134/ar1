@@ -1,0 +1,10 @@
+<view class="{{isIPhoneX ? 'container-x' :'container'}}">
+    <navigate-back url="mine" title3="常见问题"></navigate-back>
+    <van-collapse  border="{{false}}" value="{{activeNames}}" >
+        <block wx:for="{{list}}" wx:key="index" wx:for-item="item">
+            <van-collapse-item  is-link="{{false}}"  data-index="{{index}}" bindtap="goAnswer" title="{{item.q}}" name="{{index}}">
+                <image  slot="right-icon" class="right-icon" src="../images/right_icon.png"></image>
+            </van-collapse-item>
+        </block>
+    </van-collapse>
+</view>

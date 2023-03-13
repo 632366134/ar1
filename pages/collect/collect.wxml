@@ -1,11 +1,46 @@
 <!--pages/collect/collect.wxml-->
 <view class="{{isIPhoneX ? 'container-x' :'container'}}">
 
-<navigate-back url="index"></navigate-back>
+    <navigate-back url="index"></navigate-back>
     <view bindtap="goCollectSearch" class="msg_box">
         <view class="msg">找不到你想要的？前往搜索</view>
         <image src="/images/collect/back.png"></image>
     </view>
-    <collect-list url="url" list="{{compList}}" bindmyevent="select"></collect-list>
+    <view class="collectMain" wx:if="{{collect.length != 0}}">
+        <image class="collect_point" src="/images/collect/collectType.png">
+        </image>
+        <view class="ListTitle">
+            当前项目
+
+        </view>
+        <view class="delCollect" bindtap="delCollect">
+            <image src="/images/collect/delete.png"></image>
+            <text>清空</text>
+        </view>
+        <collect-list flag='{{true}}' class="listData" url="url" list="{{collect}}">
+        </collect-list>
+
+    </view>
+    <view class="collectList_bottom">
+        <view class="ListTitle2">
+            推荐项目
+
+        </view>
+        <collect-list class="listData" url="url" list="{{compList}}" bindmyevent="select"></collect-list>
+
+    </view>
     <collect-btn bindmytap="goCollect"></collect-btn>
+    <view class="cover" wx:if="{{isCover}}">
+        <view class="coverBg">
+            <view class="coverTitle">提示</view>
+            <view class="coverinter">是否清空当前收藏AR项目？</view>
+            <view class="btnGroup">
+                <view class="cancel" bindtap="cancelDel">取消</view>
+                <view class="submit" bindtap="submitDel">确定</view>
+
+                <view></view>
+
+            </view>
+        </view>
+    </view>
 </view>

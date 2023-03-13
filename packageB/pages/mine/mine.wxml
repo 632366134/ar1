@@ -1,0 +1,34 @@
+<view class="{{isIPhoneX ? 'container-x' :'container'}} mine">
+    <view class="title">我的</view>
+    <view class="main">
+        <view class="avatar">
+            <button bindchooseavatar="onChooseAvatar" class="getAvatar" open-type="chooseAvatar">
+                <image class="image" src='{{userAvatar}}'></image>
+            </button>
+
+        </view>
+        <view class="userName">
+            <input value='{{userName}}' bindblur='blur' type="nickname" class="weui-input" placeholder="点击授权用户名" />
+
+        </view>
+    </view>
+    <view bindtap="goRegister" class="banner">
+    <image class="bannerStyle" src="../images/registerLogo.png"></image>
+    </view>
+    <view class="menu">
+        <menu-item BtnType="contact" text="微信客服">
+            <image class="fontStyle" src="../images/service.png"></image>
+
+        </menu-item>
+ 
+        <menu-item bindtap="goQA" text="使用常见问题">
+            <image class="fontStyle" src="../images/question.png"></image>
+
+        </menu-item>
+        <menu-item BtnType="feedback" text="投诉与建议">
+            <image class="fontStyle" src="../images/message.png"></image>
+
+        </menu-item>
+    </view>
+    <tab-bar tabIndex="3"></tab-bar>
+</view>

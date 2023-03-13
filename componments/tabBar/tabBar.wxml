@@ -1,0 +1,14 @@
+<view class="{{isIPhoneX ? 'tabBar-x' :'tabBar'}}">
+    <view bindtap="goModel" class="tabBar-box">
+        <image class="tabBar-image" src="{{tabIndex==1?modelSrc2: modelSrc1}}"></image>
+        <text class="{{tabIndex==1?'clickStyle' : 'noClickStyle'}}">模型</text>
+    </view>
+    <view bindtap="goIndex" class="tabBar-box">
+        <image class="tabBar-image" src="{{tabIndex==2?indexSrc2 : indexSrc1}}"></image>
+        <text class="{{tabIndex==2?'clickStyle' : 'noClickStyle'}}">首页</text>
+    </view>
+    <view bindtap="goMine" class="tabBar-box">
+        <image class="tabBar-image" src="{{tabIndex==3?mSrc2 : mSrc1}}"></image>
+        <text class="{{tabIndex==3?'clickStyle' : 'noClickStyle'}} ">我的</text>
+    </view>
+</view>

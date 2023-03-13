@@ -1,0 +1,10 @@
+<view class="search_enter">
+    <view class="header">
+        <view class="search_box" bindtap="onTap">
+            <image class="image" src="/images/index/search.png"></image>
+            <input bindinput="syncInputValue" bindblur="setInputValue" value="{{inputValue}}" class="input" disabled="{{disable}}" type="text" placeholder="请输入公司名称或AR项目名称" placeholder-style="font-size: 24rpx;"/>
+            <button  bindtap="goSearch" class="search_btn">搜索</button>
+        </view>
+
+    </view>
+</view>
